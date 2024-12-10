@@ -21,14 +21,14 @@ pip install -r requirements.txt
 ## 使用方法
 
 ```bash
-python excel_art.py 输入图片 [输出Excel文件]
+python excelart.py 输入图片 [输出Excel文件]
 ```
 
 如果不指定输出Excel文件路径，程序会在输入图片的同一目录下创建同名的Excel文件。
 
 示例：
 ```bash
-python excel_art.py test_images/pixel_art.png
+python excelart.py test_images/pixel_art.png
 # 这将创建 test_images/pixel_art.xlsx
 ```
 
