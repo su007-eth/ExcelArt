@@ -1,33 +1,35 @@
-# Excel像素图片转换器
+# ExcelArt
 
-一个将图片转换为Excel像素艺术的Python程序。每个Excel单元格代表图片中的一个像素。程序包含智能像素尺寸检测算法，可以处理各种类型的像素艺术图片。
+ExcelArt 是一个Python程序，可以将图片转换为Excel艺术图，每个Excel单元格代表图片中的一个像素。程序包含智能像素尺寸检测算法，可以处理各种类型的像素艺术图片。
 
 ## 功能特点
 
 - 支持常见图片格式（PNG、JPG、GIF等）
-- 智能像素尺寸检测算法
-- 大图片自动预处理
-- 保持单元格为正方形以确保像素显示正确
-- 自动设置单元格颜色来匹配图片像素
+- 智能像素尺寸检测，特别适合像素艺术图片
+- 自动预处理大尺寸图片
+- 保持单元格正方形以确保像素显示准确
+- 自动设置单元格颜色以匹配图片像素
 
 ## 安装
 
+1. 克隆此仓库
+2. 安装所需包：
 ```bash
 pip install -r requirements.txt
 ```
 
 ## 使用方法
 
-1. 命令行方式：
 ```bash
-python excel_pixel_image.py 输入图片路径 输出Excel路径
+python excel_art.py 输入图片 [输出Excel文件]
 ```
 
-2. 在Python代码中使用：
-```python
-from excel_pixel_image import convert_image_to_excel
+如果不指定输出Excel文件路径，程序会在输入图片的同一目录下创建同名的Excel文件。
 
-convert_image_to_excel("input.jpg", "output.xlsx")
+示例：
+```bash
+python excel_art.py test_images/pixel_art.png
+# 这将创建 test_images/pixel_art.xlsx
 ```
 
 ## 像素检测算法

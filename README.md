@@ -1,6 +1,6 @@
-# Excel Pixel Image
+# ExcelArt
 
-A Python program that converts images into Excel pixel art, with each Excel cell representing a pixel in the image. The program includes an intelligent pixel size detection algorithm to handle various types of pixel art images.
+ExcelArt is a Python program that converts images into Excel art, where each Excel cell represents a pixel in the image. It features an intelligent pixel size detection algorithm to handle various types of pixel art images.
 
 ## Features
 
@@ -12,22 +12,24 @@ A Python program that converts images into Excel pixel art, with each Excel cell
 
 ## Installation
 
+1. Clone this repository
+2. Install required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
 ## Usage
 
-1. Command line:
 ```bash
-python excel_pixel_image.py input_image_path output_excel_path
+python excel_art.py input_image [output_excel]
 ```
 
-2. In Python code:
-```python
-from excel_pixel_image import convert_image_to_excel
+If output_excel is not specified, it will create an Excel file with the same name as the input image in the same directory.
 
-convert_image_to_excel("input.jpg", "output.xlsx")
+Example:
+```bash
+python excel_art.py test_images/pixel_art.png
+# This will create test_images/pixel_art.xlsx
 ```
 
 ## Pixel Detection Algorithm

@@ -1,10 +1,14 @@
 import os
-import time
-from pathlib import Path
+from excel_art import convert_image_to_excel
 
-def run_batch_test():
+def batch_test_images(input_dir="test_images", output_dir="test_results"):
+    """
+    批量测试ExcelArt程序
+    :param input_dir: 输入图片目录
+    :param output_dir: 输出Excel文件目录
+    """
     # 获取test_images目录
-    test_dir = Path("test_images")
+    test_dir = Path(input_dir)
     
     # 获取所有图片文件
     image_files = [f for f in test_dir.glob("*") 
@@ -16,7 +20,7 @@ def run_batch_test():
     
     # 测试每个图片
     for img_file in sorted(image_files):
-        output_file = test_dir / f"{img_file.stem}_batch_excel.xlsx"
+        output_file = Path(output_dir) / f"{img_file.stem}_batch_excel.xlsx"
         
         # 构建命令
         cmd = f"python3 excel_pixel_image.py {img_file} {output_file}"
@@ -38,4 +42,4 @@ def run_batch_test():
         print("=" * 50)
 
 if __name__ == "__main__":
-    run_batch_test()
+    batch_test_images()

@@ -3,11 +3,12 @@ import openpyxl
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import PatternFill
 import numpy as np
+import os
 
-class ExcelPixelImage:
+class ExcelArt:
     def __init__(self, image_path, max_size=150):
         """
-        初始化ExcelPixelImage
+        初始化ExcelArt
         :param image_path: 图片路径
         :param max_size: 处理后图片的最大尺寸（像素数）
         """
@@ -292,24 +293,40 @@ class ExcelPixelImage:
         # 保存Excel文件
         wb.save(output_path)
 
-def convert_image_to_excel(image_path, output_path, max_size=150):
+def get_default_excel_path(image_path):
     """
-    将图片转换为Excel像素图
+    根据输入图片路径生成默认的Excel输出路径
     :param image_path: 输入图片路径
-    :param output_path: 输出Excel文件路径
+    :return: 默认的Excel输出路径
+    """
+    # 获取图片所在目录和文件名（不含扩展名）
+    directory = os.path.dirname(image_path)
+    base_name = os.path.splitext(os.path.basename(image_path))[0]
+    # 生成Excel文件路径
+    return os.path.join(directory, f"{base_name}.xlsx")
+
+def convert_image_to_excel(image_path, output_path=None, max_size=150):
+    """
+    将图片转换为Excel艺术图
+    :param image_path: 输入图片路径
+    :param output_path: 输出Excel文件路径，如果为None则使用默认路径
     :param max_size: 最大像素尺寸
     """
-    converter = ExcelPixelImage(image_path, max_size)
+    if output_path is None:
+        output_path = get_default_excel_path(image_path)
+    
+    converter = ExcelArt(image_path, max_size)
     converter.load_and_resize_image()
     converter.create_excel(output_path)
 
 if __name__ == "__main__":
     # 使用示例
     import sys
-    if len(sys.argv) != 3:
-        print("使用方法: python excel_pixel_image.py 输入图片路径 输出Excel路径")
+    if len(sys.argv) < 2 or len(sys.argv) > 3:
+        print("使用方法: python excel_art.py 输入图片路径 [输出Excel路径]")
+        print("注意：如果不指定输出路径，将在与输入图片相同的目录下创建同名的Excel文件")
         sys.exit(1)
     
     input_image = sys.argv[1]
-    output_excel = sys.argv[2]
+    output_excel = sys.argv[2] if len(sys.argv) == 3 else None
     convert_image_to_excel(input_image, output_excel)
