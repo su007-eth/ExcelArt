@@ -1,13 +1,12 @@
 import os
 from pathlib import Path
-from excelart import convert_image_to_excel
+from .excelart import convert_image_to_excel
 import time
 
-def batch_test_images(input_dir="test_images", output_dir="test_results"):
+def batch_test_images(input_dir="test_images"):
     """
     批量测试ExcelArt程序
     :param input_dir: 输入图片目录
-    :param output_dir: 输出Excel文件目录
     """
     # 获取test_images目录
     test_dir = Path(input_dir)
@@ -21,20 +20,17 @@ def batch_test_images(input_dir="test_images", output_dir="test_results"):
     
     # 测试每个图片
     for img_file in sorted(image_files):
-        output_file = Path(output_dir) / f"{img_file.stem}_batch_excel.xlsx"
-        
         print("\n" + "=" * 50)
         print(f"测试图片: {img_file.name}")
         print("-" * 50)
         
         print(f"处理图片: {img_file}")
-        print(f"输出文件: {output_file}")
         
         # 记录开始时间
         start_time = time.time()
         
         try:
-            convert_image_to_excel(str(img_file), str(output_file))
+            convert_image_to_excel(str(img_file))  # 不指定输出路径，使用默认路径
             print("转换成功!")
         except Exception as e:
             print(f"转换失败: {e}")

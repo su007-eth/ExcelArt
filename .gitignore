@@ -9,6 +9,7 @@ build/
 *.egg-info/
 
 # Excel files in test_images
+test_images/*.xlsx
 test_images/*_excel.xlsx
 test_images/*_batch_excel.xlsx
 

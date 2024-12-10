@@ -21,14 +21,14 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-python excelart.py input_image [output_excel]
+python src/excelart.py input_image [output_excel]
 ```
 
 If output_excel is not specified, it will create an Excel file with the same name as the input image in the same directory.
 
 Example:
 ```bash
-python excelart.py test_images/pixel_art.png
+python src/excelart.py test_images/pixel_art.png
 # This will create test_images/pixel_art.xlsx
 ```
 
